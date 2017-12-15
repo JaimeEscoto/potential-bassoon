@@ -2,6 +2,19 @@
 <html lang="en">
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-27162090-6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-27162090-6');
+  </script>
+
   <meta charset="UTF-8">
   <title>Fuente Bibliográfica +</title>
 
@@ -21,6 +34,8 @@
     <p class="lead">
       Éste sitio fue creado para ayudarte a encontrar <code>fuentes bibliográficas</code> <strong>fácilmente</strong>. Pronto agregaremos una descripción con más información.
     </p>
+    <a href="index.php"><button type="button" name="button"><i class="fa fa-home" aria-hidden="true"></i></button></a>
+    <a href="autores.php"><button type="button" name="button"><i class="fa fa-users" aria-hidden="true"></i> | Ver autores</button></a>
     <hr>
     <form action="#">
       Escriba el <code>término</code> que desea buscar: <input type="text" placeholder="Buscar..." name="search"><button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
