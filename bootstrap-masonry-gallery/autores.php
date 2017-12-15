@@ -77,7 +77,11 @@
 
 <body>
   <header id="header" class="container">
-    <h1>Fuente Bibliográfica + </h1>
+    <p>
+    <img src="logo1.png" width="7%" align="left">
+    <h1>.    Fuente Bibliográfica + </h1>
+    </p>
+
     <p class="lead">
       Éste sitio fue creado para ayudarte a encontrar <code>fuentes bibliográficas</code> <strong>fácilmente</strong>. Pronto agregaremos una descripción con más información.
     </p>
@@ -116,8 +120,8 @@
         <h2><strong><?php echo $autor["Nombre"]; ?></strong></h2>
         <br>
         Nombre: <input id="name<?php echo $autor["Codigo"]; ?>" disabled value="<?php echo $autor["Nombre"]; ?> ">
-        <button id="updateb<?php echo $autor["Codigo"]; ?>" onclick="updateAutor(<?php echo $autor["Codigo"]; ?>)" ><i class="fa fa-share-square-o" aria-hidden="true"></i></button>
         <button id="enableb<?php echo $autor["Codigo"]; ?>" onclick="enableControls('<?php echo $autor["Codigo"]; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+<button id="updateb<?php echo $autor["Codigo"]; ?>" onclick="updateAutor(<?php echo $autor["Codigo"]; ?>)" ><i class="fa fa-share-square-o" aria-hidden="true"></i></button>
 
         <br>
         <p>---</p>

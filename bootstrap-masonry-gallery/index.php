@@ -30,7 +30,10 @@
 
 <body>
   <header id="header" class="container">
-    <h1>Fuente Bibliográfica + </h1>
+    <p>
+    <img src="logo1.png" width="7%" align="left">
+    <h1>.    Fuente Bibliográfica + </h1>
+    </p>
     <p class="lead">
       Éste sitio fue creado para ayudarte a encontrar <code>fuentes bibliográficas</code> <strong>fácilmente</strong>. Pronto agregaremos una descripción con más información.
     </p>
