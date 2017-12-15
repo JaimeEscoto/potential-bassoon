@@ -105,11 +105,13 @@
   ?>
   <div class="container">
     <form class="" action="#" name="guardarAutor">
-      <h3>Crear Autor</h3>
+      <h3>Crear Libro <button type="button" onclick="saveAutor()" ><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+</h3>
       <p>
-      Nombre del autor: <input type="text" placeholder="Escriba el nombre..." name="nombreAutor" value="">
-      <button type="button" onclick="saveAutor()" ><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-</p>
+      Nombre del Libro: <input type="text" placeholder="Escriba el nombre..." name="nombreLibro" value="">
+      <br>Autor: <input type="text" placeholder="Escriba el nombre..." name="nombreAutor" value="">
+      <br>Año: <input type="number" placeholder="Escriba el nombre..." min="1980" name="anio" value="">
+     </p>
     </form>
 
   </div>
