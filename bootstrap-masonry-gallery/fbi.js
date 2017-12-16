@@ -39,6 +39,19 @@ function enableControls(id) {
   document.getElementById("name" + id).disabled = false;
   //document.getElementById("enableb" + id).style.display = "none";
   //document.getElementById("updateb" + id).style.display = "block";
+  alert("hola");
+  if (document.getElementById("nombreAutor" + id)) {
+
+    document.getElementById("nombreAutor" + id).disabled = false;;
+
+  }
+  if (document.getElementById("anio" + id)) {
+
+    document.getElementById("anio" + id).disabled = false;;
+
+  }
+  alert("hola");
+
 }
 
 function saveAutor() {
@@ -102,6 +115,36 @@ function saveLibro() {
 }
 
 function updateAutor(codigo) {
+  if (document.getElementById("loader")) {
+
+    var x = document.getElementById("loader");
+    x.style.display = "block";
+  }
+  var nombreAutor = document.getElementById("name" + codigo).value;
+  //var edad = document.formu.edad.value;
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      //document.getElementById(divname).innerHTML = this.responseText;
+      location.reload();
+
+      //alert(this.responseText);
+    }
+  };
+
+  xmlhttp.open("GET", "updateAutor.php?codigo=" + codigo + "&nombreAutor=" + nombreAutor, true);
+
+  xmlhttp.send();
+
+}
+
+function updateLibro(codigo) {
   if (document.getElementById("loader")) {
 
     var x = document.getElementById("loader");
