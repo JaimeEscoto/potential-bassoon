@@ -88,6 +88,7 @@
     <a href="index.php"><button type="button" name="button"><i class="fa fa-home" aria-hidden="true"></i></button></a>
     <a href="autores.php"><button type="button" name="button"><i class="fa fa-users" aria-hidden="true"></i> | Ver autores</button></a>
     <a href="libros.php"><button type="button" name="button"><i class="fa fa-book" aria-hidden="true"></i> | Ver libros</button></a>
+    <a href="definiciones.php"><button type="button" name="button"><i class="fa fa-quote-right" aria-hidden="true"></i> | Ver definiciones</button></a>
 
   <hr>
     <form action="#">
@@ -116,9 +117,7 @@
   <option value="<?php echo $autor["Codigo"]; ?>"><?php echo $autor["Nombre"]; ?></option>
 <?php
   } ?>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
+
 </select>
       <br>Año: <input type="number" placeholder="Escriba el año..." min="1980" name="anio" value="1990">
      </p>

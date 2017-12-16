@@ -40,7 +40,7 @@
     <a href="index.php"><button type="button" name="button"><i class="fa fa-home" aria-hidden="true"></i></button></a>
     <a href="autores.php"><button type="button" name="button"><i class="fa fa-users" aria-hidden="true"></i> | Ver autores</button></a>
     <a href="libros.php"><button type="button" name="button"><i class="fa fa-book" aria-hidden="true"></i> | Ver libros</button></a>
-
+    <a href="definiciones.php"><button type="button" name="button"><i class="fa fa-quote-right" aria-hidden="true"></i> | Ver definiciones</button></a>
     <hr>
     <form action="#">
       Escriba el <code>término</code> que desea buscar: <input type="text" placeholder="Buscar..." name="search"><button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
