@@ -39,7 +39,7 @@ function enableControls(id) {
   document.getElementById("name" + id).disabled = false;
   //document.getElementById("enableb" + id).style.display = "none";
   //document.getElementById("updateb" + id).style.display = "block";
-  alert("hola");
+  //alert("hola");
   if (document.getElementById("nombreAutor" + id)) {
 
     document.getElementById("nombreAutor" + id).disabled = false;;
@@ -50,7 +50,7 @@ function enableControls(id) {
     document.getElementById("anio" + id).disabled = false;;
 
   }
-  alert("hola");
+  //alert("hola");
 
 }
 
@@ -145,12 +145,17 @@ function updateAutor(codigo) {
 }
 
 function updateLibro(codigo) {
+
   if (document.getElementById("loader")) {
 
     var x = document.getElementById("loader");
     x.style.display = "block";
   }
-  var nombreAutor = document.getElementById("name" + codigo).value;
+
+  var nombreLibro = document.getElementById("name" + codigo).value;
+  var nombreAutor = document.getElementById("nombreAutor" + codigo).value;
+  var anio = document.getElementById("anio" + codigo).value;
+
   //var edad = document.formu.edad.value;
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -168,7 +173,7 @@ function updateLibro(codigo) {
     }
   };
 
-  xmlhttp.open("GET", "updateAutor.php?codigo=" + codigo + "&nombreAutor=" + nombreAutor, true);
+  xmlhttp.open("GET", "updateLibro.php?codigo=" + codigo + "&nombreLibro=" + nombreLibro + "&nombreAutor=" + nombreAutor + "&anio=" + anio, true);
 
   xmlhttp.send();
 
