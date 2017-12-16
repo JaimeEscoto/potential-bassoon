@@ -98,43 +98,53 @@
   <!-- Posts -->
   <!-- <div id="grid" class="container"> -->
   <?php
-  include "getAutores.php";
+  include "getInfraestructure.php";
   $autores= getAutores();
   /* obtener un array asociativo */
 
   ?>
   <div class="container">
-    <form class="" action="#" name="guardarAutor">
-      <h3>Crear Libro <button type="button" onclick="saveAutor()" ><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    <form class="" action="#" name="guardarLibro">
+      <h3>Crear Libro <button type="button" onclick="saveLibro()" ><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 </h3>
       <p>
       Nombre del Libro: <input type="text" placeholder="Escriba el nombre..." name="nombreLibro" value="">
-      <br>Autor: <input type="text" placeholder="Escriba el nombre..." name="nombreAutor" value="">
-      <br>Año: <input type="number" placeholder="Escriba el nombre..." min="1980" name="anio" value="">
+      <br>Autor:
+      <select name="nombreAutor">
+        <?php  while ($autor = $autores->fetch_assoc()) {
+      //printf("%s (%s)\n", $fila["Name"], $fila["CountryCode"]);?>
+  <option value="<?php echo $autor["Codigo"]; ?>"><?php echo $autor["Nombre"]; ?></option>
+<?php
+  } ?>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+      <br>Año: <input type="number" placeholder="Escriba el año..." min="1980" name="anio" value="1990">
      </p>
     </form>
 
   </div>
   <div class="container" id="grid">
     <div id="posts">
-      <?php  while ($autor = $autores->fetch_assoc()) {
-      //printf("%s (%s)\n", $fila["Name"], $fila["CountryCode"]);?>
+      <?php
+      $libros= getLibros();
+       while ($libro = $libros->fetch_assoc()) {
+           //printf("%s (%s)\n", $fila["Name"], $fila["CountryCode"]);?>
       <div class="post" style="border: thin solid black">
 
-        <h2><strong><?php echo $autor["Nombre"]; ?></strong></h2>
+        <h2><strong><?php echo $libro["Nombre"]; ?></strong></h2>
         <br>
-        Nombre: <input id="name<?php echo $autor["Codigo"]; ?>" disabled value="<?php echo $autor["Nombre"]; ?> ">
-        <button id="enableb<?php echo $autor["Codigo"]; ?>" onclick="enableControls('<?php echo $autor["Codigo"]; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-<button id="updateb<?php echo $autor["Codigo"]; ?>" onclick="updateAutor(<?php echo $autor["Codigo"]; ?>)" ><i class="fa fa-share-square-o" aria-hidden="true"></i></button>
+        Nombre: <input id="name<?php echo $libro["Codigo"]; ?>" disabled value="<?php echo $libro["Nombre"]; ?> ">
 
-        <br>
-        <p>---</p>
-        <p><cite><i class="fa fa-book" aria-hidden="true"></i>  ---- </cite> <strong>---</strong>.</p>
-        <p> <code> ? ? ?</code> </p>
-        <small>Relacionados: Economía | Agricultura | Finanzas</small>
+        <button id="enableb<?php echo $libro["Codigo"]; ?>" onclick="enableControls('<?php echo $libro["Codigo"]; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+        <button id="updateb<?php echo $libro["Codigo"]; ?>" onclick="updateAutor(<?php echo $libro["Codigo"]; ?>)" ><i class="fa fa-share-square-o" aria-hidden="true"></i></button>
+        <br>Autor: <input id="autor<?php echo $libro["Codigo"]; ?>" disabled value="<?php echo $libro["NombreAutor"]; ?> ">
+        <br>Año: <input id="anio<?php echo $libro["Codigo"]; ?>" disabled value="<?php echo $libro["Anio"]; ?> ">
+        <br><small>Relacionados: Economía | Agricultura | Finanzas</small>
       </div>
       <?php
-  } ?>
+       } ?>
   </div>
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

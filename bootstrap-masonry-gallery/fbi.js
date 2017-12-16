@@ -70,6 +70,37 @@ function saveAutor() {
 
 }
 
+function saveLibro() {
+  if (document.getElementById("loader")) {
+
+    var x = document.getElementById("loader");
+    x.style.display = "block";
+  }
+  var nombreLibro = document.guardarLibro.nombreLibro.value;
+  var anio = document.guardarLibro.anio.value;
+  var codigoAutor = document.guardarLibro.nombreAutor.value;
+  //var edad = document.formu.edad.value;
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      //document.getElementById(divname).innerHTML = this.responseText;
+      location.reload();
+      //  alert(this.responseText);
+    }
+  };
+
+  xmlhttp.open("GET", "saveLibro.php?nombreLibro=" + nombreLibro + "&anio=" + anio + "&codigoAutor=" + codigoAutor + "&ip=" + geolocationData.ip + "&city=" + geolocationData.city + "&country_code=" + geolocationData.country_code + "&latitude=" + geolocationData.latitude + "&longitude=" + geolocationData.longitude, true);
+
+  xmlhttp.send();
+
+}
+
 function updateAutor(codigo) {
   if (document.getElementById("loader")) {
 

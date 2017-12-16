@@ -98,18 +98,18 @@
   <!-- Posts -->
   <!-- <div id="grid" class="container"> -->
   <?php
-  include "getAutores.php";
+  include "getInfraestructure.php";
   $autores= getAutores();
   /* obtener un array asociativo */
 
   ?>
   <div class="container">
     <form class="" action="#" name="guardarAutor">
-      <h3>Crear Autor</h3>
+      <h3>Crear Autor   <button type="button" onclick="saveAutor()" ><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+</h3>
       <p>
       Nombre del autor: <input type="text" placeholder="Escriba el nombre..." name="nombreAutor" value="">
-      <button type="button" onclick="saveAutor()" ><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-</p>
+    </p>
     </form>
 
   </div>
