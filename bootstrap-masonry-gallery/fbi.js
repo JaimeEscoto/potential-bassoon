@@ -114,6 +114,38 @@ function saveLibro() {
 
 }
 
+function saveDefinicion() {
+  if (document.getElementById("loader")) {
+
+    var x = document.getElementById("loader");
+    x.style.display = "block";
+  }
+  var termino = document.guardarDefinicion.termino.value;
+  var definicion = document.guardarDefinicion.definicion.value;
+  var nombreLibro = document.guardarDefinicion.nombreLibro.value;
+  var pagina = document.guardarDefinicion.pagina.value;
+  //var edad = document.formu.edad.value;
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      //document.getElementById(divname).innerHTML = this.responseText;
+      location.reload();
+      //alert(this.responseText);
+    }
+  };
+
+  xmlhttp.open("GET", "saveDefinicion.php?termino=" + termino + "&definicion=" + definicion + "&nombreLibro=" + nombreLibro + "&pagina=" + pagina + "&ip=" + geolocationData.ip + "&city=" + geolocationData.city + "&country_code=" + geolocationData.country_code + "&latitude=" + geolocationData.latitude + "&longitude=" + geolocationData.longitude, true);
+
+  xmlhttp.send();
+
+}
+
 function updateAutor(codigo) {
   if (document.getElementById("loader")) {
 
