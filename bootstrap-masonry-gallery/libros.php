@@ -187,7 +187,7 @@ while ($libro = $libros->fetch_assoc()) {
             <td>Nombre:
             </td>
             <td>
-              <input id="name<?php echo $libro["Codigo"]; ?>" disabled value="<?php echo $libro["Nombre"]; ?> ">
+              <input id="name<?php echo $libro["Codigo"]; ?>" disabled style="width: 100%" value="<?php echo $libro["Nombre"]; ?> ">
             </td>
             <td>
               <button id="enableb<?php echo $libro["Codigo"]; ?>" onclick="enableControls('<?php echo $libro["Codigo"]; ?>')">
@@ -204,7 +204,7 @@ while ($libro = $libros->fetch_assoc()) {
             <td> Autor:
             </td>
             <td>
-              <select id="nombreAutor<?php echo $libro["Codigo"]; ?>" disabled>
+              <select id="nombreAutor<?php echo $libro["Codigo"]; ?>" style="width: 100%" disabled >
                 <?php
 $autores->data_seek(0);
     while ($autor = $autores->fetch_assoc()) {
@@ -224,7 +224,7 @@ $autores->data_seek(0);
         <td>Año:
         </td>
         <td>
-          <input id="anio<?php echo $libro["Codigo"]; ?>" disabled value="<?php echo $libro["Anio"]; ?> ">
+          <input id="anio<?php echo $libro["Codigo"]; ?>" disabled style="width: 100%" value="<?php echo $libro["Anio"]; ?> ">
         </td>
       </tr>
       </table>
