@@ -186,22 +186,17 @@ while ($definicion = $definiciones->fetch_assoc()) {
             <?php echo $definicion["Termino"]; ?>
           </strong>
         </h2>
-        <br>
+
         <table width=100%>
           <tr>
-            <td>Termino:
-            </td>
             <td>
 
-              <input  id="name<?php echo $definicion["Codigo"]; ?>" disabled
-                value="<?php echo $definicion["Termino"]; ?>"   >
-            </td>
-            <br>
-            <td>
-              <button id="enableb<?php echo $libro["Codigo"]; ?>" onclick="enableControls('<?php echo $libro["Codigo"]; ?>')">
-                <i class="fa fa-pencil" aria-hidden="true">
-                </i>
               </button>
+                </td>
+                  <td>
+                    <button id="enableb<?php echo $libro["Codigo"]; ?>" onclick="enableControls('<?php echo $libro["Codigo"]; ?>')">
+                      <i class="fa fa-pencil" aria-hidden="true">
+                      </i>
               <button id="updateb<?php echo $libro["Codigo"]; ?>" onclick="updateLibro(<?php echo $libro["Codigo"]; ?>)" >
                 <i class="fa fa-share-square-o" aria-hidden="true">
                 </i>
@@ -209,18 +204,28 @@ while ($definicion = $definiciones->fetch_assoc()) {
             </td>
           </tr>
           <tr>
+            <td>Termino:
+            </td>
+            <td>
+
+              <input  id="name<?php echo $definicion["Codigo"]; ?>" disabled style="width: 100%"
+                value="<?php echo $definicion["Termino"]; ?>"   >
+            </td>
+            <br>
+          </tr>
+          <tr>
             <td>Definición:
             </td>
-            <td colspan="2">
-              <textarea id="definicion<?php echo $definicion["Codigo"]; ?>" rows="7" cols="20" disabled>
+            <td >
+              <textarea id="definicion<?php echo $definicion["Codigo"]; ?>" style="width: 100%" rows="7" cols="20" disabled>
                   <?php echo $definicion["Definicion"]; ?>  </textarea>
             </td>
           </tr>
           <tr>
             <td> Libro:
             </td>
-            <td colspan="2">
-              <select id="nombreLibro<?php echo $libro["Codigo"]; ?>" disabled>
+            <td >
+              <select id="nombreLibro<?php echo $libro["Codigo"]; ?>" style="width: 100%" disabled>
                 <?php
                 $libros->data_seek(0);
     while ($libro = $libros->fetch_assoc()) {
@@ -236,8 +241,8 @@ while ($definicion = $definiciones->fetch_assoc()) {
       <tr>
         <td>Pagina:
         </td>
-        <td colspan="2">
-          <input id="pagina<?php echo $definicion["Codigo"]; ?>" disabled value="<?php echo $definicion["Pagina"]; ?> ">
+        <td >
+          <input id="pagina<?php echo $definicion["Codigo"]; ?>" disabled style="width: 100%" value="<?php echo $definicion["Pagina"]; ?> ">
         </td>
       </tr>
       </table>
