@@ -194,10 +194,10 @@ while ($definicion = $definiciones->fetch_assoc()) {
               </button>
                 </td>
                   <td>
-                    <button id="enableb<?php echo $libro["Codigo"]; ?>" onclick="enableControls('<?php echo $libro["Codigo"]; ?>')">
+                    <button id="enableb<?php echo $definicion["Codigo"]; ?>" onclick="enableControls('<?php echo $definicion["Codigo"]; ?>')">
                       <i class="fa fa-pencil" aria-hidden="true">
                       </i>
-              <button id="updateb<?php echo $libro["Codigo"]; ?>" onclick="updateLibro(<?php echo $libro["Codigo"]; ?>)" >
+              <button id="updateb<?php echo $definicion["Codigo"]; ?>" onclick="updateDefinicion('<?php echo $definicion["Codigo"]; ?>')" >
                 <i class="fa fa-share-square-o" aria-hidden="true">
                 </i>
               </button>
@@ -225,12 +225,15 @@ while ($definicion = $definiciones->fetch_assoc()) {
             <td> Libro:
             </td>
             <td >
-              <select id="nombreLibro<?php echo $libro["Codigo"]; ?>" style="width: 100%" disabled>
+              <select id="nombreLibro<?php echo $definicion["Codigo"]; ?>" style="width: 100%" disabled>
                 <?php
                 $libros->data_seek(0);
     while ($libro = $libros->fetch_assoc()) {
         //printf("%s (%s)\n", $fila["Name"], $fila["CountryCode"]);?>
-                          <option value="<?php echo $libro["CodigoLibro"]; ?>">
+                          <option value="<?php echo $libro["CodigoLibro"]; ?>"
+                            <?php if ($libro["CodigoLibro"]==$definicion["Libro"]) {
+            echo "selected";
+        } ?>>
                             <?php echo $libro["NombreLibro"]." - ".$libro["Anio"]." - ".$libro["NombreAutor"]; ?>
                           </option>
                           <?php

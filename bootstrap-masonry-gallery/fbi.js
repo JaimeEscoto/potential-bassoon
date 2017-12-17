@@ -50,6 +50,22 @@ function enableControls(id) {
     document.getElementById("anio" + id).disabled = false;;
 
   }
+  if (document.getElementById("definicion" + id)) {
+
+    document.getElementById("definicion" + id).disabled = false;;
+
+  }
+  if (document.getElementById("nombreLibro" + id)) {
+
+    document.getElementById("nombreLibro" + id).disabled = false;;
+
+  }
+  if (document.getElementById("pagina" + id)) {
+
+    document.getElementById("pagina" + id).disabled = false;;
+
+  }
+
   //alert("hola");
 
 }
@@ -206,6 +222,43 @@ function updateLibro(codigo) {
   };
 
   xmlhttp.open("GET", "updateLibro.php?codigo=" + codigo + "&nombreLibro=" + nombreLibro + "&nombreAutor=" + nombreAutor + "&anio=" + anio, true);
+
+  xmlhttp.send();
+
+}
+
+function updateDefinicion(codigo) {
+
+  if (document.getElementById("loader")) {
+
+    var x = document.getElementById("loader");
+    x.style.display = "block";
+  }
+
+  var termino = document.getElementById("name" + codigo).value;
+  var nombreLibro = document.getElementById("nombreLibro" + codigo).value;
+  //var termino = document.getElementById("termino" + codigo).value;
+  var definicion = document.getElementById("definicion" + codigo).value;
+  var pagina = document.getElementById("pagina" + codigo).value;
+
+  //var edad = document.formu.edad.value;
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      //document.getElementById(divname).innerHTML = this.responseText;
+      //location.reload();
+
+      alert(this.responseText);
+    }
+  };
+
+  xmlhttp.open("GET", "updateDefinicion.php?codigo=" + codigo + "&termino=" + termino + "&definicion=" + definicion + "&nombreLibro=" + nombreLibro + "&pagina=" + pagina, true);
 
   xmlhttp.send();
 
