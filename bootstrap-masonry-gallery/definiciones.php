@@ -136,6 +136,8 @@
   <!-- <div id="grid" class="container"> -->
   <?php
 include "getInfraestructure.php";
+
+
 $libros= getLibrosAutores();
 /* obtener un array asociativo */
 ?>

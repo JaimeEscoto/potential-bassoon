@@ -2,6 +2,40 @@
 <html lang="en">
 
 <head>
+  <style>
+.danger {
+    /*background-color: #ffdddd; */
+    border-left: 6px solid #f44336;
+    border-right:  thin solid black;
+    border-top:  thin solid black;
+    border-bottom:   thin solid black;
+}
+
+.success {
+    /*background-color: #ddffdd; */
+    border-left: 6px solid #4CAF50;
+    border-right:  thin solid black;
+    border-top:  thin solid black;
+    border-bottom:   thin solid black;
+}
+
+.info {
+    /*background-color: #e7f3fe; */
+    border-left: 6px solid #2196F3;
+    border-right:  thin solid black;
+    border-top:  thin solid black;
+    border-bottom:   thin solid black;
+}
+
+
+.warning {
+    /* background-color: #ffffcc; */
+    border-left: 6px solid #ffeb3b;
+    border-right:  thin solid black;
+    border-top:  thin solid black;
+    border-bottom:   thin solid black;
+}
+</style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-27162090-6"></script>
   <script>
@@ -24,6 +58,7 @@
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/popUp.css">
 
   <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
@@ -70,10 +105,24 @@
     <a href="libros.php"><button type="button" name="button"><i class="fa fa-book" aria-hidden="true"></i> | Ver libros</button></a>
     <a href="definiciones.php"><button type="button" name="button"><i class="fa fa-quote-right" aria-hidden="true"></i> | Ver definiciones</button></a>
     <hr>
-    <form action="#">
+    <form action="index.php" method="get">
       Escriba el <code>término</code> que desea buscar: <input type="text" placeholder="Buscar..." name="search"><button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 
     </form>
+    <h2>
+    <?php
+
+    include "getInfraestructure.php";
+    if (isset($_GET['search'])) {
+        $search = ($_GET['search']);
+        $definiciones= getDefinicionesGeneral($search);
+        echo "Valor buscado: ".$search;
+    } else {
+        $definiciones= getDefinicionesGeneral("");
+    }
+
+     ?>
+     </h2>
   </header>
   <!-- Posts -->
   <!-- <div id="grid" class="container"> -->
@@ -81,21 +130,79 @@
   <div class="container" id="grid">
     <div id="posts">
       <?php
-      include "getInfraestructure.php";
-$definiciones= getDefinicionesGeneral();
+
+
 while ($definicion = $definiciones->fetch_assoc()) {
     //printf("%s (%s)\n", $fila["Name"], $fila["CountryCode"]);?>
-      <div class="post" style="border: thin solid black">
+      <div class="post
+      <?php $color = rand(0, 2);
+    switch ($color) {
+    case 0:
+        echo "info";
+        break;
+    case 1:
+        echo "success";
+        break;
+    case 2:
+        echo "warning";
+        break;
+} ?>" >
         <strong><?php echo $definicion["Termino"]; ?> </strong>
         <br>
         <p><?php echo $definicion["Definicion"]; ?></p>
         <p><cite><i class="fa fa-book" aria-hidden="true"></i>
-        <?php echo $definicion["NombreLibro"]; ?></cite> - Página: <?php echo $definicion["Pagina"].". "; ?>  <strong>  <?php echo $definicion["Anio"]; ?></strong>.</p>
+        <?php echo $definicion["NombreLibro"]; ?></cite> - <?php echo $definicion["NombreAutor"]; ?> - Página: <?php echo $definicion["Pagina"].". "; ?>  <strong>  <?php echo $definicion["Anio"]; ?></strong>.</p>
         <p> <code>ISBN Proximamente</code> </p>
         <p>
-          <button name="citaText"><i class="fa fa-leanpub" aria-hidden="true"></i> | Basada en autor</button>
-          <button name="citaText"><i class="fa fa-leanpub" aria-hidden="true"></i> | Basada en el texto</button>
+          <div class="box">
+          	<a class="button" href="#popupBS<?php echo $definicion["Codigo"]; ?>">
+<i class="fa fa-leanpub" aria-hidden="true"></i>
+            | Basada en autor</a>
+          </div>
+
+          <div id="popupBS<?php echo $definicion["Codigo"]; ?>" class="overlay">
+          	<div class="popup">
+          		<h2>Cita basada en el autor</h2>
+          		<a class="close" href="#">&times;</a>
+          		<div class="content">
+          			<p>Texto...</p> <p>
+                   <?php echo $definicion["NombreAutor"]." (".$definicion["Anio"].")"; ?> afirma que: "<?php echo $definicion["Definicion"]."\" p. (".$definicion["Pagina"].")"; ?>
+                 </p>
+                 <p>
+                Texto...
+              </p>
+              </div>
+          	</div>
+          </div>
+
+          <div class="box">
+            <a class="button" href="#popupBT<?php echo $definicion["Codigo"]; ?>">
+        <i class="fa fa-leanpub" aria-hidden="true"></i>
+            | Basada en texto</a>
+          </div>
+
+          <div id="popupBT<?php echo $definicion["Codigo"]; ?>" class="overlay">
+            <div class="popup">
+              <h2>Cita basada en el texto</h2>
+              <a class="close" href="#">&times;</a>
+              <div class="content">
+                <p>Texto...</p> <p>
+
+                  <div style="padding-left:5px;">
+                      **Parafrasear **
+                    <?php echo $definicion["Definicion"]."(".$definicion["NombreAutor"].", ".$definicion["Anio"].", p.".$definicion["Pagina"].")"; ?>
+**Parafrasear **
+                  </div>
+
+                 </p>
+                 <p>
+                Texto...
+              </p>
+              </div>
+            </div>
+          </div>
          </p>
+
         <small>Relacionados: Proximamente | Proximamente | Proximamente</small>
       </div>
     <?php
