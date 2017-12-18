@@ -53,3 +53,17 @@ function getDefiniciones()
     }
     mysqli_close($conn);
 }
+
+function getDefinicionesGeneral()
+{
+    $conn=getFuenteBibliograficaConnection();
+    if (!$conn) {
+        die('Could not connect: ' . mysqli_error($conn));
+    }
+    $sql="SELECT d.Codigo, d.Termino,d.Definicion,d.Pagina, l.Nombre as NombreLibro, l.Anio, a.Nombre as NombreAutor from Definiciones d INNER join Libros l on d.Libro=l.Codigo INNER JOIN Autores a on l.Autor=a.Codigo";
+    if ($result = $conn->query($sql)) {
+        mysqli_close($conn);
+        return $result;
+    }
+    mysqli_close($conn);
+}

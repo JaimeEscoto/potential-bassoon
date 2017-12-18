@@ -252,9 +252,9 @@ function updateDefinicion(codigo) {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       //document.getElementById(divname).innerHTML = this.responseText;
-      //location.reload();
+      location.reload();
 
-      alert(this.responseText);
+      //alert(this.responseText);
     }
   };
 
