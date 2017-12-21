@@ -91,6 +91,9 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<!-- The Gallery JS -->
+<script src="fbi.js">
+</script>
 </div>
   <header id="header" class="container">
     <p>
@@ -147,7 +150,8 @@ while ($definicion = $definiciones->fetch_assoc()) {
         echo "warning";
         break;
 } ?>" >
-        <strong><?php echo $definicion["Termino"]; ?> </strong>
+        <strong><h2><?php echo $definicion["Termino"]; ?></h2> </strong>
+        <br>
         <br>
         <p><?php echo $definicion["Definicion"]; ?></p>
         <p><cite><i class="fa fa-book" aria-hidden="true"></i>
@@ -202,7 +206,20 @@ while ($definicion = $definiciones->fetch_assoc()) {
             </div>
           </div>
          </p>
-
+         <br>
+         <div class="box">
+           <a class="button"  href="javascript:downloadZotero('<?php echo $definicion["NombreLibro"].$definicion["Termino"].'.bibtex'; ?>','@book{bodie2003finanzas,
+             title={Finanzas},
+             author={Bodie, Z. and Merton, R.C.},
+             isbn={9789702600978},
+             series={{\'A}rea Universitarios},
+             url={https://books.google.hn/books?id=jPTppKDvIv8C},
+             year={2003},
+             publisher={Pearson Educaci{\'o}n}
+           }');">
+       <i class="fa fa-level-down" aria-hidden="true"></i>
+           | Zotero</a>
+         </div>
         <small>Relacionados: Proximamente | Proximamente | Proximamente</small>
       </div>
     <?php
